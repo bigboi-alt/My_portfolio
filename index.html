@@ -727,22 +727,23 @@
                 </div>
                 <div class="contact-right reveal">
                     <form class="contact-form" id="contact-form" action="https://formspree.io/f/mbdaygnz" method="POST">
+                        <input type="hidden" name="_next" value="https://bigboi-alt.github.io/My_portfolio/">
                         <div class="form-row">
                             <div class="form-field">
-                                <input type="text" id="name" required placeholder=" ">
+                                <input type="text" id="name" name="name" required placeholder=" ">
                                 <label for="name">Your Name</label>
                             </div>
                             <div class="form-field">
-                                <input type="email" id="email" required placeholder=" ">
+                                <input type="email" id="email" name="email" required placeholder=" ">
                                 <label for="email">Your Email</label>
                             </div>
                         </div>
                         <div class="form-field">
-                            <input type="text" id="subject" required placeholder=" ">
+                            <input type="text" id="subject" name="subject" required placeholder=" ">
                             <label for="subject">What's this about?</label>
                         </div>
                         <div class="form-field">
-                            <textarea id="message" rows="5" required placeholder=" "></textarea>
+                            <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
                             <label for="message">Tell me more...</label>
                         </div>
                         <button type="submit" class="btn-glow btn-full">

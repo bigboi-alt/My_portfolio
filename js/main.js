@@ -180,22 +180,32 @@ contactForm.addEventListener('submit', function(e) {
     
     const btn = contactForm.querySelector('button[type="submit"]');
     const originalHTML = btn.innerHTML;
-    const formData = new FormData(contactForm);
 
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Sending...</span>';
     btn.disabled = true;
     btn.style.opacity = '0.7';
 
+    const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+
     fetch('https://formspree.io/f/mbdaygnz', {
         method: 'POST',
-        body: formData,
+        body: JSON.stringify(data),
         headers: {
+            'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
     })
-    .then(response => {
-        if (response.ok) {
-            btn.innerHTML = '<i class="fas fa-check"></i> <span>Sent! I\'ll reply soon 🚀</span>';
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(result) {
+        if (result.ok) {
+            btn.innerHTML = '<i class="fas fa-check"></i> <span>Sent! I\'ll reply soon</span>';
             btn.style.background = '#00e5a0';
             btn.style.opacity = '1';
             contactForm.reset();
@@ -204,19 +214,17 @@ contactForm.addEventListener('submit', function(e) {
             btn.style.background = '#ff6b9d';
             btn.style.opacity = '1';
         }
-
-        setTimeout(() => {
+        setTimeout(function() {
             btn.innerHTML = originalHTML;
             btn.style.background = '';
             btn.disabled = false;
         }, 3000);
     })
-    .catch(error => {
+    .catch(function() {
         btn.innerHTML = '<i class="fas fa-times"></i> <span>Failed. Try again!</span>';
         btn.style.background = '#ff6b9d';
         btn.style.opacity = '1';
-
-        setTimeout(() => {
+        setTimeout(function() {
             btn.innerHTML = originalHTML;
             btn.style.background = '';
             btn.disabled = false;
