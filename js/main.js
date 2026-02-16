@@ -175,27 +175,53 @@ function animateCounter(el) {
 // ============================================
 const contactForm = document.getElementById('contact-form');
 
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
+    
     const btn = contactForm.querySelector('button[type="submit"]');
     const originalHTML = btn.innerHTML;
+    const formData = new FormData(contactForm);
 
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Sending...</span>';
     btn.disabled = true;
     btn.style.opacity = '0.7';
 
-    setTimeout(() => {
-        btn.innerHTML = '<i class="fas fa-check"></i> <span>Sent! I\'ll reply soon 🚀</span>';
-        btn.style.background = '#00e5a0';
+    fetch('https://formspree.io/f/mbdaygnz', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            btn.innerHTML = '<i class="fas fa-check"></i> <span>Sent! I\'ll reply soon 🚀</span>';
+            btn.style.background = '#00e5a0';
+            btn.style.opacity = '1';
+            contactForm.reset();
+        } else {
+            btn.innerHTML = '<i class="fas fa-times"></i> <span>Failed. Try again!</span>';
+            btn.style.background = '#ff6b9d';
+            btn.style.opacity = '1';
+        }
+
+        setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.style.background = '';
+            btn.disabled = false;
+        }, 3000);
+    })
+    .catch(error => {
+        btn.innerHTML = '<i class="fas fa-times"></i> <span>Failed. Try again!</span>';
+        btn.style.background = '#ff6b9d';
         btn.style.opacity = '1';
 
         setTimeout(() => {
             btn.innerHTML = originalHTML;
             btn.style.background = '';
             btn.disabled = false;
-            contactForm.reset();
         }, 3000);
-    }, 1500);
+    });
 });
 
 // ============================================
