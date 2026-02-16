@@ -245,14 +245,14 @@ button { font-family: inherit; }
 .logo-icon {
     width: 36px;
     height: 36px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: white;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
     font-size: 1rem;
-    color: white;
+    color: #0c0c14;
 }
 
 .nav-links {
