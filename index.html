@@ -3,333 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Portfolio</title>
+    <title>Arya | Student Developer & Creator</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-follower" id="cursor-follower"></div>
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
 
-    <!-- Particle Background -->
-    <canvas id="particles"></canvas>
+    <!-- Gradient Orbs Background -->
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="nav-logo">
-            <span class="logo-bracket">&lt;</span>
-            <span class="logo-text">YN</span>
-            <span class="logo-bracket">/&gt;</span>
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <div class="logo-icon">A</div>
+                <span>arya.dev</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#future" class="nav-link">Vision</a>
+                <a href="#beyond" class="nav-link">Beyond Code</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+                <a href="#contact" class="nav-cta">
+                    <span>Hire Me</span>
+                    <div class="cta-glow"></div>
+                </a>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+                    <div class="menu-bar"></div>
+                    <div class="menu-bar"></div>
+                </button>
+            </div>
         </div>
-        <div class="nav-links" id="nav-links">
-            <a href="#home" class="nav-link active" data-section="home">Home</a>
-            <a href="#about" class="nav-link" data-section="about">About</a>
-            <a href="#skills" class="nav-link" data-section="skills">Skills</a>
-            <a href="#projects" class="nav-link" data-section="projects">Projects</a>
-            <a href="#experience" class="nav-link" data-section="experience">Experience</a>
-            <a href="#contact" class="nav-link" data-section="contact">Contact</a>
-        </div>
-        <div class="nav-actions">
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-                <i class="fas fa-moon"></i>
-                <i class="fas fa-sun"></i>
-            </button>
-            <a href="#contact" class="nav-cta">Let's Talk</a>
-        </div>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </nav>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="mobile-menu-links">
-            <a href="#home" class="mobile-link">Home</a>
-            <a href="#about" class="mobile-link">About</a>
-            <a href="#skills" class="mobile-link">Skills</a>
-            <a href="#projects" class="mobile-link">Projects</a>
-            <a href="#experience" class="mobile-link">Experience</a>
-            <a href="#contact" class="mobile-link">Contact</a>
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-content">
+            <a href="#home" class="mobile-link" style="--i:1">Home</a>
+            <a href="#about" class="mobile-link" style="--i:2">About</a>
+            <a href="#projects" class="mobile-link" style="--i:3">Projects</a>
+            <a href="#future" class="mobile-link" style="--i:4">Vision</a>
+            <a href="#beyond" class="mobile-link" style="--i:5">Beyond Code</a>
+            <a href="#contact" class="mobile-link" style="--i:6">Contact</a>
         </div>
     </div>
 
-    <!-- Hero Section -->
+    <!-- ==================== HERO ==================== -->
     <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-badge animate-on-scroll">
-                <span class="badge-dot"></span>
-                Available for work
-            </div>
-            <h1 class="hero-title animate-on-scroll">
-                <span class="title-line">Hi, I'm</span>
-                <span class="title-name gradient-text">Your Name</span>
-                <span class="title-line">
-                    I build
-                    <span class="typing-wrapper">
-                        <span class="typing-text" id="typing-text"></span>
-                        <span class="typing-cursor">|</span>
-                    </span>
-                </span>
-            </h1>
-            <p class="hero-description animate-on-scroll">
-                A passionate full-stack developer crafting beautiful, performant, 
-                and user-centric digital experiences. Turning ideas into reality 
-                with clean code and creative design.
-            </p>
-            <div class="hero-actions animate-on-scroll">
-                <a href="#projects" class="btn btn-primary">
-                    <span>View My Work</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <span>Get In Touch</span>
-                </a>
-            </div>
-            <div class="hero-socials animate-on-scroll">
-                <a href="https://github.com/yourusername" target="_blank" class="social-link" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-link" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://twitter.com/yourusername" target="_blank" class="social-link" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="mailto:you@email.com" class="social-link" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-        </div>
-        <div class="hero-visual animate-on-scroll">
-            <div class="hero-image-wrapper">
-                <div class="hero-image-border"></div>
-                <div class="hero-image">
-                    <!-- Replace with your photo -->
-                    <div class="placeholder-avatar">
-                        <i class="fas fa-user"></i>
+        <div class="hero-container">
+            <div class="hero-left">
+                <div class="hero-status reveal">
+                    <span class="status-dot"></span>
+                    <span>Open to Opportunities</span>
+                </div>
+                <h1 class="hero-heading reveal">
+                    <span class="hero-line">Hey, I'm</span>
+                    <span class="hero-name">Arya<span class="accent-dot">.</span></span>
+                </h1>
+                <div class="hero-roles reveal">
+                    <span class="role-static">I</span>
+                    <div class="role-carousel">
+                        <span class="role-text" id="role-text"></span>
+                        <span class="role-cursor"></span>
                     </div>
                 </div>
-                <div class="floating-card card-1">
-                    <i class="fab fa-react"></i>
-                    <span>React</span>
-                </div>
-                <div class="floating-card card-2">
-                    <i class="fab fa-node-js"></i>
-                    <span>Node.js</span>
-                </div>
-                <div class="floating-card card-3">
-                    <i class="fab fa-python"></i>
-                    <span>Python</span>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <span>Scroll Down</span>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">&lt;about&gt;</span>
-                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
-                <p class="section-subtitle">Get to know me better</p>
-            </div>
-            <div class="about-grid">
-                <div class="about-text animate-on-scroll">
-                    <p>
-                        I'm a passionate developer with <strong>X+ years</strong> of experience 
-                        building web applications and digital solutions. I love turning complex 
-                        problems into simple, beautiful, and intuitive designs.
-                    </p>
-                    <p>
-                        When I'm not coding, you can find me exploring new technologies, 
-                        contributing to open-source projects, or sharing knowledge through 
-                        blog posts and mentoring.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number" data-count="20">0</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="3">0</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="500">0</span>
-                            <span class="stat-label">GitHub Commits</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="10">0</span>
-                            <span class="stat-label">Happy Clients</span>
-                        </div>
-                    </div>
-                    <a href="assets/resume.pdf" class="btn btn-primary" download>
-                        <i class="fas fa-download"></i>
-                        <span>Download Resume</span>
+                <p class="hero-desc reveal">
+                    A 16-year-old student developer from <span class="highlight">Noida, India</span> 
+                    who builds AI tools, web apps & games. Currently in 11th grade at 
+                    <span class="highlight">The Khaitan School</span>, turning wild ideas into working code.
+                </p>
+                <div class="hero-buttons reveal">
+                    <a href="#projects" class="btn-glow">
+                        <span>Explore My Work</span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <a href="https://github.com/bigboi-alt" target="_blank" class="btn-outline">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
                     </a>
                 </div>
-                <div class="about-image animate-on-scroll">
-                    <div class="code-window">
-                        <div class="window-header">
-                            <div class="window-dots">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
+                <div class="hero-metrics reveal">
+                    <div class="metric">
+                        <span class="metric-num" data-target="6">0</span><span class="metric-plus">+</span>
+                        <span class="metric-label">Projects</span>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric">
+                        <span class="metric-num" data-target="4">0</span><span class="metric-plus">+</span>
+                        <span class="metric-label">Live Sites</span>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric">
+                        <span class="metric-num" data-target="3">0</span><span class="metric-plus">+</span>
+                        <span class="metric-label">AI Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right reveal">
+                <div class="hero-card-stack">
+                    <div class="hero-main-card">
+                        <div class="card-header">
+                            <div class="card-dots">
+                                <span></span><span></span><span></span>
                             </div>
-                            <span class="window-title">about.js</span>
+                            <span class="card-filename">arya.config.ts</span>
                         </div>
-                        <div class="window-body">
-                            <pre><code><span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
-  <span class="code-property">name</span>: <span class="code-string">"Your Name"</span>,
-  <span class="code-property">title</span>: <span class="code-string">"Full-Stack Developer"</span>,
-  <span class="code-property">location</span>: <span class="code-string">"Your City, Country"</span>,
-  <span class="code-property">education</span>: <span class="code-string">"CS Degree"</span>,
-  <span class="code-property">interests</span>: [
-    <span class="code-string">"Web Development"</span>,
-    <span class="code-string">"UI/UX Design"</span>,
-    <span class="code-string">"Open Source"</span>,
-    <span class="code-string">"Machine Learning"</span>
+                        <div class="card-body">
+                            <pre><code><span class="c-key">export const</span> <span class="c-var">arya</span> = {
+  <span class="c-prop">age</span>: <span class="c-num">16</span>,
+  <span class="c-prop">class</span>: <span class="c-str">"11th - Commerce + IP"</span>,
+  <span class="c-prop">school</span>: <span class="c-str">"The Khaitan School"</span>,
+  <span class="c-prop">location</span>: <span class="c-str">"Noida, UP, India"</span>,
+  <span class="c-prop">passions</span>: [
+    <span class="c-str">"Web Development"</span>,
+    <span class="c-str">"AI/ML Tools"</span>,
+    <span class="c-str">"Game Development"</span>,
+    <span class="c-str">"Wild Inventions"</span>
   ],
-  <span class="code-property">currentlyLearning</span>: <span class="code-string">"Rust"</span>,
-  <span class="code-property">funFact</span>: <span class="code-string">"I debug with console.log"</span>
+  <span class="c-prop">dream</span>: <span class="c-str">"Build the ultimate app"</span>,
+  <span class="c-prop">motto</span>: <span class="c-str">"If it can be built, I'll build it."</span>
 };</code></pre>
                         </div>
                     </div>
+                    <div class="floating-badge badge-1">
+                        <i class="fab fa-python"></i> Python
+                    </div>
+                    <div class="floating-badge badge-2">
+                        <i class="fab fa-js"></i> JavaScript
+                    </div>
+                    <div class="floating-badge badge-3">
+                        <i class="fas fa-brain"></i> AI/ML
+                    </div>
+                    <div class="floating-badge badge-4">
+                        <i class="fas fa-gamepad"></i> Games
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="scroll-hint">
+            <div class="scroll-line"></div>
+            <span>Scroll to explore</span>
+        </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="section skills" id="skills">
+    <!-- ==================== ABOUT ==================== -->
+    <section class="section" id="about">
         <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">&lt;skills&gt;</span>
-                <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
-                <p class="section-subtitle">Technologies & tools I work with</p>
+            <div class="section-label reveal">
+                <span class="label-line"></span>
+                <span>01 — About Me</span>
             </div>
-            <div class="skills-categories">
-                <div class="skill-category animate-on-scroll">
-                    <h3 class="category-title">
-                        <i class="fas fa-code"></i>
-                        Frontend
-                    </h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-tooltip="HTML5">
-                            <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                            <span>HTML5</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="95"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="CSS3">
-                            <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-                            <span>CSS3</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="JavaScript">
-                            <div class="skill-icon"><i class="fab fa-js"></i></div>
-                            <span>JavaScript</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="88"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="React">
-                            <div class="skill-icon"><i class="fab fa-react"></i></div>
-                            <span>React</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="TypeScript">
-                            <div class="skill-icon"><i class="fab fa-js"></i></div>
-                            <span>TypeScript</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="Tailwind CSS">
-                            <div class="skill-icon"><i class="fab fa-css3"></i></div>
-                            <span>Tailwind</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-                        </div>
+            <div class="about-layout">
+                <div class="about-content reveal">
+                    <h2 class="section-heading">
+                        Not your average<br>
+                        <span class="gradient-text">student developer.</span>
+                    </h2>
+                    <div class="about-paragraphs">
+                        <p>
+                            I'm a <strong>Class 11 Commerce + IP student</strong> from Noida, India
+                            with an obsession for building things that actually work. While my stream 
+                            says Commerce and my goal says <strong>CA</strong>, my brain keeps dragging 
+                            me back to code.
+                        </p>
+                        <p>
+                            From <strong>AI-powered health diagnostics</strong> to 
+                            <strong>automated social media bots</strong>, from 
+                            <strong>deepfake detectors</strong> to <strong>browser games</strong> — 
+                            I don't limit myself to one lane. If an idea excites me, I build it. 
+                            Period.
+                        </p>
+                        <p>
+                            I believe in solving real problems with technology. Whether it's helping 
+                            detect Parkinson's through voice analysis or catching hidden charges on 
+                            hospital bills — every project I build has a purpose.
+                        </p>
+                    </div>
+                    <div class="about-tags">
+                        <span class="about-tag"><i class="fas fa-map-marker-alt"></i> Noida / Ghaziabad, UP</span>
+                        <span class="about-tag"><i class="fas fa-school"></i> The Khaitan School</span>
+                        <span class="about-tag"><i class="fas fa-book"></i> Commerce + IP</span>
+                        <span class="about-tag"><i class="fas fa-bullseye"></i> Future CA</span>
+                        <span class="about-tag"><i class="fas fa-code"></i> Self-taught Developer</span>
                     </div>
                 </div>
-                <div class="skill-category animate-on-scroll">
-                    <h3 class="category-title">
-                        <i class="fas fa-server"></i>
-                        Backend
-                    </h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-tooltip="Node.js">
-                            <div class="skill-icon"><i class="fab fa-node-js"></i></div>
-                            <span>Node.js</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+                <div class="about-visual reveal">
+                    <div class="skills-orbital">
+                        <div class="orbital-center">
+                            <span>Skills</span>
                         </div>
-                        <div class="skill-item" data-tooltip="Python">
-                            <div class="skill-icon"><i class="fab fa-python"></i></div>
-                            <span>Python</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="82"></div></div>
+                        <div class="orbital-ring ring-1">
+                            <div class="orbital-item" style="--angle: 0deg"><i class="fab fa-python"></i></div>
+                            <div class="orbital-item" style="--angle: 90deg"><i class="fab fa-html5"></i></div>
+                            <div class="orbital-item" style="--angle: 180deg"><i class="fab fa-css3-alt"></i></div>
+                            <div class="orbital-item" style="--angle: 270deg"><i class="fab fa-js"></i></div>
                         </div>
-                        <div class="skill-item" data-tooltip="Express.js">
-                            <div class="skill-icon"><i class="fab fa-node"></i></div>
-                            <span>Express</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="MongoDB">
-                            <div class="skill-icon"><i class="fas fa-database"></i></div>
-                            <span>MongoDB</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="78"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="PostgreSQL">
-                            <div class="skill-icon"><i class="fas fa-database"></i></div>
-                            <span>PostgreSQL</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="Firebase">
-                            <div class="skill-icon"><i class="fas fa-fire"></i></div>
-                            <span>Firebase</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category animate-on-scroll">
-                    <h3 class="category-title">
-                        <i class="fas fa-tools"></i>
-                        Tools & Others
-                    </h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-tooltip="Git">
-                            <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-                            <span>Git</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="Docker">
-                            <div class="skill-icon"><i class="fab fa-docker"></i></div>
-                            <span>Docker</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="70"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="Figma">
-                            <div class="skill-icon"><i class="fab fa-figma"></i></div>
-                            <span>Figma</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="AWS">
-                            <div class="skill-icon"><i class="fab fa-aws"></i></div>
-                            <span>AWS</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="65"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="Linux">
-                            <div class="skill-icon"><i class="fab fa-linux"></i></div>
-                            <span>Linux</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
-                        </div>
-                        <div class="skill-item" data-tooltip="VS Code">
-                            <div class="skill-icon"><i class="fas fa-code"></i></div>
-                            <span>VS Code</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="95"></div></div>
+                        <div class="orbital-ring ring-2">
+                            <div class="orbital-item" style="--angle: 45deg"><i class="fas fa-brain"></i></div>
+                            <div class="orbital-item" style="--angle: 135deg"><i class="fab fa-git-alt"></i></div>
+                            <div class="orbital-item" style="--angle: 225deg"><i class="fas fa-gamepad"></i></div>
+                            <div class="orbital-item" style="--angle: 315deg"><i class="fas fa-robot"></i></div>
                         </div>
                     </div>
                 </div>
@@ -337,387 +224,574 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="section projects" id="projects">
+    <!-- ==================== PROJECTS ==================== -->
+    <section class="section section-dark" id="projects">
         <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">&lt;projects&gt;</span>
-                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-                <p class="section-subtitle">Some things I've built</p>
+            <div class="section-label reveal">
+                <span class="label-line"></span>
+                <span>02 — Projects</span>
             </div>
-            <div class="project-filters animate-on-scroll">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web Apps</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-                <button class="filter-btn" data-filter="design">Design</button>
+            <h2 class="section-heading reveal">
+                Things I've <span class="gradient-text">built.</span>
+            </h2>
+            <p class="section-desc reveal">
+                Each project started with "what if..." and ended with working code.
+            </p>
+
+            <!-- Featured Project 1 -->
+            <div class="featured-project reveal">
+                <div class="fp-content">
+                    <span class="fp-label">Featured Project</span>
+                    <h3 class="fp-title">Parkinson's AI Detector</h3>
+                    <div class="fp-description">
+                        <p>
+                            An AI system that detects early signs of <strong>Parkinson's disease</strong> 
+                            by analyzing voice patterns and detecting micro-tremors. Trained on the 
+                            <strong>TESS (Toronto Emotional Speech Set)</strong> and other datasets.
+                        </p>
+                        <p>
+                            This isn't just a school project — it's a genuine attempt at using AI for 
+                            healthcare. Currently being developed privately with early contributions 
+                            from my friend <strong>Stephin</strong>.
+                        </p>
+                    </div>
+                    <div class="fp-tags">
+                        <span>Python</span>
+                        <span>TensorFlow</span>
+                        <span>TESS Dataset</span>
+                        <span>Audio Analysis</span>
+                        <span>Healthcare AI</span>
+                    </div>
+                    <div class="fp-status">
+                        <span class="status-badge wip">
+                            <i class="fas fa-hammer"></i> In Development (Private)
+                        </span>
+                    </div>
+                </div>
+                <div class="fp-visual">
+                    <div class="fp-mockup">
+                        <div class="mockup-screen">
+                            <div class="voice-wave">
+                                <div class="wave-bar" style="--h: 40%"></div>
+                                <div class="wave-bar" style="--h: 70%"></div>
+                                <div class="wave-bar" style="--h: 30%"></div>
+                                <div class="wave-bar" style="--h: 90%"></div>
+                                <div class="wave-bar" style="--h: 50%"></div>
+                                <div class="wave-bar" style="--h: 80%"></div>
+                                <div class="wave-bar" style="--h: 35%"></div>
+                                <div class="wave-bar" style="--h: 95%"></div>
+                                <div class="wave-bar" style="--h: 45%"></div>
+                                <div class="wave-bar" style="--h: 75%"></div>
+                                <div class="wave-bar" style="--h: 60%"></div>
+                                <div class="wave-bar" style="--h: 40%"></div>
+                                <div class="wave-bar" style="--h: 85%"></div>
+                                <div class="wave-bar" style="--h: 55%"></div>
+                                <div class="wave-bar" style="--h: 70%"></div>
+                                <div class="wave-bar" style="--h: 30%"></div>
+                            </div>
+                            <div class="analysis-text">
+                                <span class="analyzing">Analyzing voice patterns...</span>
+                                <div class="result-bar">
+                                    <div class="result-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- Featured Project 2 -->
+            <div class="featured-project reverse reveal">
+                <div class="fp-content">
+                    <span class="fp-label">Featured Project</span>
+                    <h3 class="fp-title">BillGuard</h3>
+                    <div class="fp-description">
+                        <p>
+                            A smart bill management app that <strong>scans your bills</strong>, 
+                            detects <strong>unethical charges</strong> (especially from hospitals), 
+                            auto-organizes receipts, and generates <strong>monthly spending summaries</strong>.
+                        </p>
+                        <p>
+                            Features an <strong>AI assistant</strong> that analyzes your spending patterns, 
+                            tells you where you overspent, and gives actionable advice to save money.
+                            Set monthly saving goals and let the app track everything for you.
+                        </p>
+                    </div>
+                    <div class="fp-tags">
+                        <span>AI Assistant</span>
+                        <span>Bill Scanning</span>
+                        <span>Expense Tracking</span>
+                        <span>Fraud Detection</span>
+                        <span>Financial Analysis</span>
+                    </div>
+                    <div class="fp-status">
+                        <span class="status-badge wip">
+                            <i class="fas fa-lightbulb"></i> In Planning & Development
+                        </span>
+                    </div>
+                </div>
+                <div class="fp-visual">
+                    <div class="fp-mockup">
+                        <div class="mockup-screen billguard-screen">
+                            <div class="bill-icon"><i class="fas fa-receipt"></i></div>
+                            <div class="bill-stats">
+                                <div class="bill-stat">
+                                    <span class="bs-label">Monthly Spend</span>
+                                    <span class="bs-value">₹24,500</span>
+                                </div>
+                                <div class="bill-stat alert">
+                                    <span class="bs-label">Suspicious Charges</span>
+                                    <span class="bs-value">₹3,200</span>
+                                </div>
+                                <div class="bill-stat good">
+                                    <span class="bs-label">Estimated Savings</span>
+                                    <span class="bs-value">₹5,800</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Grid -->
             <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card animate-on-scroll" data-category="web">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-shopping-cart"></i>
+                <!-- DeepFake Detector -->
+                <div class="project-card reveal" style="--delay: 0.1s">
+                    <div class="pc-header">
+                        <div class="pc-icon">
+                            <i class="fas fa-eye"></i>
                         </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Live Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Source Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                        <div class="pc-links">
+                            <a href="https://bigboi-alt.github.io/Deepfake_finder/#" target="_blank" title="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://github.com/bigboi-alt/Deepfake_finder" target="_blank" title="Source Code">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
-                        </div>
-                        <h3 class="project-title">E-Commerce Platform</h3>
-                        <p class="project-desc">
-                            A full-featured e-commerce platform with user auth, 
-                            payment processing, and admin dashboard.
-                        </p>
+                    <h3 class="pc-title">DeepFake Detector</h3>
+                    <p class="pc-desc">
+                        Detects AI-generated content and deepfakes. Built because it's getting 
+                        way too hard to tell what's real online anymore.
+                    </p>
+                    <div class="pc-tags">
+                        <span>AI/ML</span>
+                        <span>Python</span>
+                        <span>Web App</span>
                     </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-card animate-on-scroll" data-category="web">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Live Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Source Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">Socket.io</span>
-                            <span class="tag">PostgreSQL</span>
-                        </div>
-                        <h3 class="project-title">Real-Time Chat App</h3>
-                        <p class="project-desc">
-                            A real-time messaging application with group chats, 
-                            file sharing, and video calls.
-                        </p>
+                    <div class="pc-status live">
+                        <i class="fas fa-circle"></i> Live
                     </div>
                 </div>
-                <!-- Project 3 -->
-                <div class="project-card animate-on-scroll" data-category="mobile">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-heartbeat"></i>
+
+                <!-- Smart File Organizer -->
+                <div class="project-card reveal" style="--delay: 0.2s">
+                    <div class="pc-header">
+                        <div class="pc-icon">
+                            <i class="fas fa-folder-open"></i>
                         </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Live Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Source Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                        <div class="pc-links">
+                            <a href="https://github.com/bigboi-alt/smart-file-organizer" target="_blank" title="Source Code">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <div class="project-tags">
-                            <span class="tag">React Native</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Charts</span>
-                        </div>
-                        <h3 class="project-title">Fitness Tracker</h3>
-                        <p class="project-desc">
-                            Mobile fitness app with workout tracking, progress 
-                            analytics, and social features.
-                        </p>
+                    <h3 class="pc-title">Smart File Organizer</h3>
+                    <p class="pc-desc">
+                        Automated file sorting system built with Python. Drop your messy files 
+                        and watch them organize themselves like magic.
+                    </p>
+                    <div class="pc-tags">
+                        <span>Python</span>
+                        <span>Automation</span>
+                        <span>CLI Tool</span>
+                    </div>
+                    <div class="pc-status live">
+                        <i class="fas fa-circle"></i> Complete
                     </div>
                 </div>
-                <!-- Project 4 -->
-                <div class="project-card animate-on-scroll" data-category="design">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-palette"></i>
+
+                <!-- AI Resume Enhancer -->
+                <div class="project-card reveal" style="--delay: 0.3s">
+                    <div class="pc-header">
+                        <div class="pc-icon">
+                            <i class="fas fa-file-alt"></i>
                         </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Live Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Source Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                        <div class="pc-links">
+                            <a href="https://bigboi-alt.github.io/ai-resume-enhancer/" target="_blank" title="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://github.com/bigboi-alt/ai-resume-enhancer" target="_blank" title="Source Code">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <div class="project-tags">
-                            <span class="tag">Figma</span>
-                            <span class="tag">UI/UX</span>
-                            <span class="tag">Prototyping</span>
-                        </div>
-                        <h3 class="project-title">Design System</h3>
-                        <p class="project-desc">
-                            A comprehensive design system with reusable components, 
-                            tokens, and documentation.
-                        </p>
+                    <h3 class="pc-title">AI Resume Enhancer</h3>
+                    <p class="pc-desc">
+                        Upload your resume and let AI suggest improvements, fix formatting, 
+                        and make it stand out. Still being refined.
+                    </p>
+                    <div class="pc-tags">
+                        <span>AI</span>
+                        <span>JavaScript</span>
+                        <span>Web App</span>
+                    </div>
+                    <div class="pc-status wip-status">
+                        <i class="fas fa-circle"></i> In Progress
                     </div>
                 </div>
-                <!-- Project 5 -->
-                <div class="project-card animate-on-scroll" data-category="web">
-                    <div class="project-image">
-                        <div class="project-placeholder">
+
+                <!-- Website Safety Checker -->
+                <div class="project-card reveal" style="--delay: 0.4s">
+                    <div class="pc-header">
+                        <div class="pc-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="pc-links">
+                            <a href="https://bigboi-alt.github.io/website-safety-checker/" target="_blank" title="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://github.com/bigboi-alt/website-safety-checker" target="_blank" title="Source Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="pc-title">Website Safety Checker</h3>
+                    <p class="pc-desc">
+                        Paste any URL and check if it's safe to visit. Scans for malware, 
+                        phishing, and other security threats before you click.
+                    </p>
+                    <div class="pc-tags">
+                        <span>Security</span>
+                        <span>API</span>
+                        <span>Web App</span>
+                    </div>
+                    <div class="pc-status live">
+                        <i class="fas fa-circle"></i> Live
+                    </div>
+                </div>
+
+                <!-- SPINCORE -->
+                <div class="project-card reveal" style="--delay: 0.5s">
+                    <div class="pc-header">
+                        <div class="pc-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="pc-links">
+                            <a href="https://bigboi-alt.github.io/SPINCORE_V2/" target="_blank" title="Play Now">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://github.com/bigboi-alt/SPINCORE_V2" target="_blank" title="Source Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="pc-title">SPINCORE V2</h3>
+                    <p class="pc-desc">
+                        A browser-based game that's actually fun to play. Built entirely 
+                        from scratch because why not make a game when you can?
+                    </p>
+                    <div class="pc-tags">
+                        <span>Game Dev</span>
+                        <span>JavaScript</span>
+                        <span>Canvas/WebGL</span>
+                    </div>
+                    <div class="pc-status live">
+                        <i class="fas fa-circle"></i> Play Now
+                    </div>
+                </div>
+
+                <!-- Insta Reel Bot -->
+                <div class="project-card reveal" style="--delay: 0.6s">
+                    <div class="pc-header">
+                        <div class="pc-icon">
                             <i class="fas fa-robot"></i>
                         </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Live Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Source Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                        <div class="pc-links">
+                            <a href="https://github.com/bigboi-alt" target="_blank" title="Source Code">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">TensorFlow</span>
-                            <span class="tag">FastAPI</span>
-                        </div>
-                        <h3 class="project-title">AI Image Generator</h3>
-                        <p class="project-desc">
-                            An AI-powered image generation tool with style transfer 
-                            and custom model training.
-                        </p>
-                    </div>
-                </div>
-                <!-- Project 6 -->
-                <div class="project-card animate-on-scroll" data-category="web">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Live Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Source Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tags">
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">Express</span>
-                            <span class="tag">Redis</span>
-                        </div>
-                        <h3 class="project-title">Project Management Tool</h3>
-                        <p class="project-desc">
-                            Kanban-style project management with real-time 
-                            collaboration and analytics.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="section experience" id="experience">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">&lt;experience&gt;</span>
-                <h2 class="section-title">My <span class="gradient-text">Journey</span></h2>
-                <p class="section-subtitle">Where I've worked & what I've learned</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2023 - Present</div>
-                        <h3 class="timeline-title">Senior Developer</h3>
-                        <h4 class="timeline-company">Company Name</h4>
-                        <p class="timeline-desc">
-                            Led development of customer-facing applications, 
-                            mentored junior developers, and improved CI/CD pipelines.
-                        </p>
-                        <div class="timeline-tags">
-                            <span>React</span>
-                            <span>AWS</span>
-                            <span>TypeScript</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2021 - 2023</div>
-                        <h3 class="timeline-title">Full-Stack Developer</h3>
-                        <h4 class="timeline-company">Another Company</h4>
-                        <p class="timeline-desc">
-                            Built and maintained multiple web applications, 
-                            implemented RESTful APIs, and optimized database queries.
-                        </p>
-                        <div class="timeline-tags">
-                            <span>Node.js</span>
-                            <span>MongoDB</span>
-                            <span>Vue.js</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2020 - 2021</div>
-                        <h3 class="timeline-title">Frontend Developer</h3>
-                        <h4 class="timeline-company">Startup Inc</h4>
-                        <p class="timeline-desc">
-                            Developed responsive web interfaces, collaborated 
-                            with designers, and implemented pixel-perfect UIs.
-                        </p>
-                        <div class="timeline-tags">
-                            <span>HTML/CSS</span>
-                            <span>JavaScript</span>
-                            <span>React</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2016 - 2020</div>
-                        <h3 class="timeline-title">Computer Science Degree</h3>
-                        <h4 class="timeline-company">University Name</h4>
-                        <p class="timeline-desc">
-                            Studied algorithms, data structures, software engineering, 
-                            and machine learning. Graduated with honors.
-                        </p>
-                        <div class="timeline-tags">
-                            <span>Algorithms</span>
-                            <span>Data Structures</span>
-                            <span>ML</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">&lt;contact&gt;</span>
-                <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
-                <p class="section-subtitle">Let's work together on something great</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info animate-on-scroll">
-                    <h3>Let's talk about your project</h3>
-                    <p>
-                        I'm always open to discussing new projects, creative ideas, 
-                        or opportunities to be part of your vision.
+                    <h3 class="pc-title">Insta Reel Bot</h3>
+                    <p class="pc-desc">
+                        AI marketing automation tool. Runs locally, generates content via AI, 
+                        schedules posts, and auto-publishes. A wild experiment in automation.
                     </p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <span class="contact-label">Email</span>
-                                <a href="mailto:you@email.com">you@email.com</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <span class="contact-label">Location</span>
-                                <span>Your City, Country</span>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <span class="contact-label">Availability</span>
-                                <span>Open to opportunities</span>
-                            </div>
-                        </div>
+                    <div class="pc-tags">
+                        <span>Python</span>
+                        <span>AI Content</span>
+                        <span>Automation</span>
                     </div>
-                    <div class="contact-socials">
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                    <div class="pc-status experimental">
+                        <i class="fas fa-flask"></i> Experimental
                     </div>
                 </div>
-                <form class="contact-form animate-on-scroll" id="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" required placeholder=" ">
-                        <label for="name">Your Name</label>
-                        <span class="form-highlight"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" required placeholder=" ">
-                        <label for="email">Your Email</label>
-                        <span class="form-highlight"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" required placeholder=" ">
-                        <label for="subject">Subject</label>
-                        <span class="form-highlight"></span>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
-                        <label for="message">Your Message</label>
-                        <span class="form-highlight"></span>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ==================== FUTURE VISION ==================== -->
+    <section class="section" id="future">
+        <div class="container">
+            <div class="section-label reveal">
+                <span class="label-line"></span>
+                <span>03 — Future Vision</span>
+            </div>
+            <h2 class="section-heading reveal">
+                Where I'm <span class="gradient-text">headed.</span>
+            </h2>
+            <p class="section-desc reveal">
+                Commerce stream by choice, coder by compulsion. Here's the roadmap.
+            </p>
+
+            <div class="vision-grid">
+                <div class="vision-card reveal" style="--delay: 0.1s">
+                    <div class="vc-number">01</div>
+                    <div class="vc-icon"><i class="fas fa-calculator"></i></div>
+                    <h3>Become a CA</h3>
+                    <p>
+                        Yes, a Chartered Accountant who codes. Commerce is my main stream and 
+                        I'm committed to it — but I'll always keep building on the side.
+                    </p>
+                </div>
+                <div class="vision-card reveal" style="--delay: 0.2s">
+                    <div class="vc-number">02</div>
+                    <div class="vc-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>The Ultimate App</h3>
+                    <p>
+                        My dream project — one massive application that does everything. 
+                        A project anyone can use, that solves daily problems, powered by AI. 
+                        The kind of app that makes people say "how did I live without this?"
+                    </p>
+                </div>
+                <div class="vision-card reveal" style="--delay: 0.3s">
+                    <div class="vc-number">03</div>
+                    <div class="vc-icon"><i class="fas fa-gamepad"></i></div>
+                    <h3>Game Development</h3>
+                    <p>
+                        I'm deeply attracted to game building. From browser games to full 
+                        experiences — I want to create worlds people can lose themselves in.
+                    </p>
+                </div>
+                <div class="vision-card reveal" style="--delay: 0.4s">
+                    <div class="vc-number">04</div>
+                    <div class="vc-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>AI for Good</h3>
+                    <p>
+                        From Parkinson's detection to bill fraud catching — I want to build 
+                        AI tools that genuinely help people in their daily lives.
+                    </p>
+                </div>
+            </div>
+
+            <div class="vision-quote reveal">
+                <blockquote>
+                    "I can't get my mind out of these things."
+                    <cite>— Me, every time I try to focus on Commerce</cite>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BEYOND CODE ==================== -->
+    <section class="section section-dark" id="beyond">
+        <div class="container">
+            <div class="section-label reveal">
+                <span class="label-line"></span>
+                <span>04 — Beyond Code</span>
+            </div>
+            <h2 class="section-heading reveal">
+                More than just <span class="gradient-text">a developer.</span>
+            </h2>
+
+            <div class="beyond-layout">
+                <div class="beyond-card music-card reveal">
+                    <div class="music-visual">
+                        <div class="music-eq">
+                            <div class="eq-bar" style="--h: 60%"></div>
+                            <div class="eq-bar" style="--h: 80%"></div>
+                            <div class="eq-bar" style="--h: 40%"></div>
+                            <div class="eq-bar" style="--h: 90%"></div>
+                            <div class="eq-bar" style="--h: 55%"></div>
+                            <div class="eq-bar" style="--h: 75%"></div>
+                            <div class="eq-bar" style="--h: 45%"></div>
+                            <div class="eq-bar" style="--h: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="beyond-info">
+                        <h3><i class="fas fa-music"></i> Musician at Heart</h3>
+                        <p>
+                            Music runs through me just like code does. I've completed 
+                            <strong>4 out of 6 exams</strong> in Tabla (Indian classical percussion) 
+                            and also play Piano, Guitar, and Drums.
+                        </p>
+                        <div class="instrument-list">
+                            <div class="instrument">
+                                <span class="inst-icon">🥁</span>
+                                <span>Tabla</span>
+                                <span class="inst-level">Grade 4/6</span>
+                            </div>
+                            <div class="instrument">
+                                <span class="inst-icon">🎹</span>
+                                <span>Piano</span>
+                                <span class="inst-level">Intermediate</span>
+                            </div>
+                            <div class="instrument">
+                                <span class="inst-icon">🎸</span>
+                                <span>Guitar</span>
+                                <span class="inst-level">Learning</span>
+                            </div>
+                            <div class="instrument">
+                                <span class="inst-icon">🥁</span>
+                                <span>Drums</span>
+                                <span class="inst-level">Learning</span>
+                            </div>
+                        </div>
+                        <p class="music-philosophy">
+                            <em>"One can never truly achieve full mastery — there is always 
+                            something new to learn."</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICES / AVAILABILITY ==================== -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="services-banner reveal">
+                <div class="sb-content">
+                    <h2>Need a website or a game?</h2>
+                    <p>
+                        I build websites for brands and custom browser games. 
+                        Whether you need a landing page, a full web app, or something 
+                        completely unique — let's make it happen.
+                    </p>
+                    <div class="sb-services">
+                        <span><i class="fas fa-globe"></i> Brand Websites</span>
+                        <span><i class="fas fa-gamepad"></i> Browser Games</span>
+                        <span><i class="fas fa-mobile-alt"></i> Web Apps</span>
+                        <span><i class="fas fa-robot"></i> AI Tools</span>
+                    </div>
+                </div>
+                <a href="#contact" class="btn-glow">
+                    <span>Let's Work Together</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="section section-dark" id="contact">
+        <div class="container">
+            <div class="section-label reveal">
+                <span class="label-line"></span>
+                <span>05 — Contact</span>
+            </div>
+            <div class="contact-layout">
+                <div class="contact-left reveal">
+                    <h2 class="contact-heading">
+                        Let's build<br>
+                        <span class="gradient-text">something cool.</span>
+                    </h2>
+                    <p class="contact-desc">
+                        Got an idea? Need a website? Want to collaborate on something wild? 
+                        Or just want to say hi? I'm always up for a conversation.
+                    </p>
+                    <div class="contact-methods">
+                        <a href="mailto:aryasv09@gmail.com" class="contact-method">
+                            <div class="cm-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="cm-info">
+                                <span class="cm-label">Email me at</span>
+                                <span class="cm-value">aryasv09@gmail.com</span>
+                            </div>
+                            <i class="fas fa-arrow-right cm-arrow"></i>
+                        </a>
+                        <a href="https://github.com/bigboi-alt" target="_blank" class="contact-method">
+                            <div class="cm-icon"><i class="fab fa-github"></i></div>
+                            <div class="cm-info">
+                                <span class="cm-label">Check my code on</span>
+                                <span class="cm-value">github.com/bigboi-alt</span>
+                            </div>
+                            <i class="fas fa-arrow-right cm-arrow"></i>
+                        </a>
+                    </div>
+                    <div class="contact-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Noida / Ghaziabad, Uttar Pradesh, India</span>
+                    </div>
+                </div>
+                <div class="contact-right reveal">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-field">
+                                <input type="text" id="name" required placeholder=" ">
+                                <label for="name">Your Name</label>
+                            </div>
+                            <div class="form-field">
+                                <input type="email" id="email" required placeholder=" ">
+                                <label for="email">Your Email</label>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <input type="text" id="subject" required placeholder=" ">
+                            <label for="subject">What's this about?</label>
+                        </div>
+                        <div class="form-field">
+                            <textarea id="message" rows="5" required placeholder=" "></textarea>
+                            <label for="message">Tell me more...</label>
+                        </div>
+                        <button type="submit" class="btn-glow btn-full">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-bracket">&lt;</span>
-                    <span class="logo-text">YN</span>
-                    <span class="logo-bracket">/&gt;</span>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <div class="logo-icon">A</div>
+                        <span>arya.dev</span>
+                    </div>
+                    <p>16-year-old builder from Noida, India.<br>Commerce student by day, developer by obsession.</p>
                 </div>
-                <p class="footer-text">
-                    Designed & Built by <span class="gradient-text">Your Name</span>
-                </p>
+                <div class="footer-links-group">
+                    <h4>Navigate</h4>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Projects</h4>
+                    <a href="https://bigboi-alt.github.io/Deepfake_finder/#" target="_blank">DeepFake Detector</a>
+                    <a href="https://bigboi-alt.github.io/SPINCORE_V2/" target="_blank">SPINCORE V2</a>
+                    <a href="https://bigboi-alt.github.io/website-safety-checker/" target="_blank">Safety Checker</a>
+                    <a href="https://bigboi-alt.github.io/ai-resume-enhancer/" target="_blank">Resume Enhancer</a>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Connect</h4>
+                    <a href="https://github.com/bigboi-alt" target="_blank">GitHub</a>
+                    <a href="mailto:aryasv09@gmail.com">Email</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Arya. Built with late nights, curiosity, and too much screen time.</p>
                 <div class="footer-socials">
-                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/bigboi-alt" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:aryasv09@gmail.com"><i class="fas fa-envelope"></i></a>
                 </div>
-                <p class="footer-copyright">
-                    &copy; 2024 All rights reserved.
-                </p>
             </div>
         </div>
     </footer>
