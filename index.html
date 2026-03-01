@@ -353,31 +353,44 @@
                 </div>
             </div>
 
-            <!-- Featured Project 3 - Velocity Gaming -->
+           <!-- ==================== FEATURED PROJECT 3 - VELOCITY GAMING (FIXED) ==================== -->
+<!--
+  KEY FIX: Flames and Japanese chars are now inside ONE wrapper div (.vg-bg-layer)
+  that is position:absolute. Previously they were direct grid children which caused
+  the Japanese text to render as inline content instead of a background watermark.
+-->
+
 <div class="featured-project velocity-featured reveal">
-    <div class="velocity-flames-featured">
-        <div class="flame ff1"></div>
-        <div class="flame ff2"></div>
-        <div class="flame ff3"></div>
-        <div class="flame ff4"></div>
-        <div class="flame ff5"></div>
-        <div class="flame ff6"></div>
-        <div class="flame ff7"></div>
-        <div class="flame ff8"></div>
+
+    <!-- ▼ BACKGROUND EFFECTS — wrapped in single absolute layer -->
+    <div class="vg-bg-layer">
+        <!-- Flames rising from bottom -->
+        <div class="velocity-flames-featured">
+            <div class="flame ff1"></div>
+            <div class="flame ff2"></div>
+            <div class="flame ff3"></div>
+            <div class="flame ff4"></div>
+            <div class="flame ff5"></div>
+            <div class="flame ff6"></div>
+            <div class="flame ff7"></div>
+            <div class="flame ff8"></div>
+        </div>
+        <!-- Japanese watermark characters — scattered as background -->
+        <div class="japanese-bg-featured">
+            <span class="jpf jpf-1">速</span>
+            <span class="jpf jpf-2">度</span>
+            <span class="jpf jpf-3">力</span>
+            <span class="jpf jpf-4">炎</span>
+            <span class="jpf jpf-5">魂</span>
+            <span class="jpf jpf-6">勝</span>
+            <span class="jpf jpf-7">戦</span>
+            <span class="jpf jpf-8">雷</span>
+            <span class="jpf jpf-9">神</span>
+            <span class="jpf jpf-10">龍</span>
+        </div>
     </div>
-    <div class="japanese-bg-featured">
-        <span class="jpf jpf-1">速</span>
-        <span class="jpf jpf-2">度</span>
-        <span class="jpf jpf-3">力</span>
-        <span class="jpf jpf-4">炎</span>
-        <span class="jpf jpf-5">魂</span>
-        <span class="jpf jpf-6">勝</span>
-        <span class="jpf jpf-7">戦</span>
-        <span class="jpf jpf-8">雷</span>
-        <span class="jpf jpf-9">神</span>
-        <span class="jpf jpf-10">龍</span>
-    </div>
-    <div class="velocity-ember-overlay"></div>
+
+    <!-- ▼ COLUMN 1 — Content -->
     <div class="fp-content velocity-fp-content">
         <div class="velocity-fp-badge">
             <span class="vfp-star">★</span> MY GREATEST PROJECT
@@ -389,13 +402,13 @@
         </h3>
         <div class="fp-description velocity-fp-desc">
             <p>
-                A <strong>highly customizable communication platform</strong> built 
-                specifically for gamers. Real-time chat, custom themes, voice channels, 
+                A <strong>highly customizable communication platform</strong> built
+                specifically for gamers. Real-time chat, custom themes, voice channels,
                 and a UI that hits different. Think Discord — but with my own twist.
             </p>
             <p>
-                Built with <strong>JSX, Rust, JavaScript, and CSS</strong>, hosted on 
-                <strong>Firebase</strong>. V1 is live and breathing — but this is just 
+                Built with <strong>JSX, Rust, JavaScript, and CSS</strong>, hosted on
+                <strong>Firebase</strong>. V1 is live and breathing — but this is just
                 the beginning. More features, more customization, more fire incoming.
             </p>
         </div>
@@ -421,9 +434,12 @@
             </div>
         </div>
     </div>
+
+    <!-- ▼ COLUMN 2 — Discord-style Chat Mockup -->
     <div class="fp-visual velocity-fp-visual">
         <div class="fp-mockup velocity-fp-mockup">
             <div class="mockup-screen velocity-mockup-screen">
+                <!-- Browser chrome -->
                 <div class="vm-header">
                     <div class="vm-dots">
                         <span class="vm-dot"></span>
@@ -432,6 +448,7 @@
                     </div>
                     <span class="vm-url">velocity-gaming.web.app</span>
                 </div>
+                <!-- Sidebar + Chat -->
                 <div class="vm-body">
                     <div class="vm-sidebar">
                         <div class="vm-channel active">
@@ -477,13 +494,14 @@
                             <div class="vm-typing-dots">
                                 <span></span><span></span><span></span>
                             </div>
-                            <span>Someone is typing...</span>
+                            <span>Captain_Holt is typing...</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
             <!-- Project Grid -->
