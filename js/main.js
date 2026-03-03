@@ -270,3 +270,67 @@ window.addEventListener('scroll', () => {
         orb.style.transform += ` translateY(${scrolled * speed}px)`;
     });
 });
+// ============================================
+// TERMINAL TYPING EFFECT
+// ============================================
+function terminalType(elementId, text, speed = 50) {
+    return new Promise(resolve => {
+        const el = document.getElementById(elementId);
+        if (!el) { resolve(); return; }
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                el.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                resolve();
+            }
+        }
+        type();
+    });
+}
+
+// Start terminal animation when section is visible
+const portalSection = document.querySelector('.portal-section');
+if (portalSection) {
+    const portalObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    terminalType('term-cmd-1', 'cat portfolio_status.log', 40).then(() => {
+                        setTimeout(() => {
+                            terminalType('term-cmd-2', './grant_access.sh --user=visitor', 35);
+                        }, 2000);
+                    });
+                }, 800);
+                portalObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    portalObserver.observe(portalSection);
+}
+
+// Portal stats counter
+const portalStats = document.querySelectorAll('.ps-num');
+const portalStatsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-target'));
+            let current = 0;
+            const step = target / 60;
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                el.textContent = Math.floor(current);
+            }, 30);
+            portalStatsObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+
+portalStats.forEach(stat => portalStatsObserver.observe(stat));
